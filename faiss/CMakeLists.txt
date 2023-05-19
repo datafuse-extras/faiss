@@ -221,7 +221,7 @@ target_link_libraries(faiss PRIVATE OpenMP::OpenMP_CXX)
 target_link_libraries(faiss_avx2 PRIVATE OpenMP::OpenMP_CXX)
 
 target_link_libraries(faiss PRIVATE "../3rd_party/OpenBLAS/libopenblas.a")
-target_link_libraries(faiss_avx2 PRIVATE ${BLAS_LIBRARIES})
+target_link_libraries(faiss_avx2 PRIVATE "../3rd_party/OpenBLAS/libopenblas.a")
 
 #find_package(LAPACK REQUIRED)
 #target_link_libraries(faiss PRIVATE ${LAPACK_LIBRARIES})
