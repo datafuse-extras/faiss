@@ -29,6 +29,7 @@ if(FAISS_ENABLE_GPU)
 endif()
 
 add_subdirectory(faiss)
+add_subdirectory(3rd_party/OpenBLAS)
 
 if(FAISS_ENABLE_GPU)
   add_subdirectory(faiss/gpu)

@@ -220,19 +220,12 @@ find_package(OpenMP REQUIRED)
 target_link_libraries(faiss PRIVATE OpenMP::OpenMP_CXX)
 target_link_libraries(faiss_avx2 PRIVATE OpenMP::OpenMP_CXX)
 
-find_package(MKL)
-if(MKL_FOUND)
-  target_link_libraries(faiss PRIVATE ${MKL_LIBRARIES})
-  target_link_libraries(faiss_avx2 PRIVATE ${MKL_LIBRARIES})
-else()
-  find_package(BLAS REQUIRED)
-  target_link_libraries(faiss PRIVATE ${BLAS_LIBRARIES})
-  target_link_libraries(faiss_avx2 PRIVATE ${BLAS_LIBRARIES})
+target_link_libraries(faiss PRIVATE "../3rd_party/OpenBLAS/libopenblas.a")
+target_link_libraries(faiss_avx2 PRIVATE ${BLAS_LIBRARIES})
 
-  find_package(LAPACK REQUIRED)
-  target_link_libraries(faiss PRIVATE ${LAPACK_LIBRARIES})
-  target_link_libraries(faiss_avx2 PRIVATE ${LAPACK_LIBRARIES})
-endif()
+#find_package(LAPACK REQUIRED)
+#target_link_libraries(faiss PRIVATE ${LAPACK_LIBRARIES})
+#target_link_libraries(faiss_avx2 PRIVATE ${LAPACK_LIBRARIES})
 
 install(TARGETS faiss
   EXPORT faiss-targets
